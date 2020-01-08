@@ -17,9 +17,10 @@ public class ConnectorToDB {
 
 
     public static void closeConnectionToDB() throws SQLException {
-
+        System.out.println("Closing connection...");
         getStatement(getConnection()).close();
         getConnection().close();
+        System.out.println("Connection to the database is closed.");
     }
 
     public static void connectToDB() throws ClassNotFoundException, SQLException {
@@ -33,12 +34,10 @@ public class ConnectorToDB {
     }
 
     public static Connection getConnection() throws SQLException{
-        System.out.println("Creating database connection...");
         return DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
     }
 
     public static Statement getStatement(Connection connection) throws SQLException{
-        System.out.println("Executing statement...");
         return connection.createStatement();
     }
 
